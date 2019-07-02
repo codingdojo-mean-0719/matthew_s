@@ -26,17 +26,17 @@ var users = {
   ]
 };
 
-for (var key in users) {
-  var employee = users.employees;
+for (let key in users) {
+  let employee = users.employees;
   console.log("EMPLOYEES");
-  for (var i = 0; i < employee.length; i++) {
-    var length = employee[i].first_name.length + employee[i].last_name.length;
+  for (let i = 0; i < employee.length; i++) {
+    let length = employee[i].first_name.length + employee[i].last_name.length;
     console.log(i + " - " + employee[i].last_name + " , " + employee[i].first_name + " - " + length);
   }
-  var manager = users.managers;
+  let manager = users.managers;
   console.log("MANAGERS");
-  for (var i = 0; i < manager.length; i++) {
-    var length = manager[i].first_name.length + manager[i].last_name.length;
+  for (let i = 0; i < manager.length; i++) {
+    let length = manager[i].first_name.length + manager[i].last_name.length;
     console.log(i + " - " + manager[i].last_name + " , " + manager[i].first_name + " - " + length);
   }
 }
