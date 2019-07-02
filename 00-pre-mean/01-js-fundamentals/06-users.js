@@ -15,7 +15,7 @@ function userLanguages(users) {
   }
 }
 
-
+// Updated for advanced code 
 var users = [
   {
     fname: "Kermit",
