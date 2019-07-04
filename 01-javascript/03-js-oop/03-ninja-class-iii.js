@@ -18,12 +18,14 @@ class Ninja {
 }
 
 class Sensei extends Ninja {
-  constructor(wisdom) {
+  constructor(name) {
+    super(name);
     this.health = 200;
     this.speed = 10;
     this.strength = 10;
     this.widsom = 10;
   }
+
   drinkAndSpeak() {
     super.drinkSake();
     console.log("ahhh that was good sake, I feel healthier");
