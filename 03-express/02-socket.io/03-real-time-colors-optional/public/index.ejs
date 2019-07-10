@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Color Picker</title>
+  <link rel="stylesheet" href="/stylesheet/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      var socket = io.connect();
+      socket.on('greeting', function (data) {
+        console.log(data.msg);
+      });
+      socket.on("bgColor", function (data) {
+        $("body").css("background-color", data.color);
+        console.log("changing background color " + data.color);
+      });
+      $("#green").click(function () {
+        socket.emit('greenPush');
+      });
+      $("#blue").click(function () {
+        socket.emit('bluePush');
+      });
+      $("#pink").click(function () {
+        socket.emit('pinkPush');
+      });
+      socket.on("changeGreen", function (data) {
+        $("body").css("background-color", data.color);
+        console.log("changing background color " + data.color);
+      });
+      socket.on("changeBlue", function (data) {
+        $("body").css("background-color", data.color);
+        console.log("changing background color " + data.color);
+      });
+      socket.on("changePink", function (data) {
+        $("body").css("background-color", data.color);
+        console.log("changing background color " + data.color);
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <h1>color picker</h1>
+  <button id="green">Green</button><button id="blue">Blue</button><button id="pink">Pink</button>
+</body>
+
+</html>
