@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Epic Button Game</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      var socket = io.connect();
+      socket.on('greeting', function (data) {
+        console.log(data.msg);
+      });
+      $("#epicButton").click(function () {
+        socket.emit('button_click', { counter: 1 });
+      });
+      socket.on('updated_counter', function (data) {
+        console.log(data.counter);
+        $('#count').html("<p>Times The Button Has Been Pressed: " + data.counter + "</p>");
+      });
+      $("#resetButton").click(function () {
+        socket.emit('reset_click');
+      })
+    })
+  </script>
+</head>
+
+<body>
+  <div id="count">
+    <p>Times The Button Has Been Pressed: 0</p>
+  </div>
+  <!-- <form action="/" id="epicForm">
+    <input type="hidden" id="num" value="1">
+    <input type="submit" value="Push The Epic Button"> -->
+  <button id="epicButton">Push The Epic Button</button>
+  </form>
+  <button id="resetButton">Reset</button>
+</body>
+
+</html>
