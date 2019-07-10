@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Chat Room</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      var socket = io.connect();
+      socket.on("loadChat", function (data) {
+        for (var i = 0; i < data.length; i++) {
+          $(".chat").append("<p>" + data[i] + "</p>");
+        }
+        console.log("changing background color " + data[0]);
+      });
+      socket.emit('addUser', prompt("What is your name?"));
+      socket.on("joinedUser", function (data) {
+        $(".chat").append("<p>" + data[data.length - 1] + "</p>");
+        console.log("changing background color " + data[0]);
+      });
+      $("#sendChat").click(function () {
+        socket.emit('sendChat', $("#chattext").val());
+        $("#chattext").val('');
+      });
+      socket.on("updatedChat", function (data) {
+        $(".chat").append("<p>" + data[data.length - 1] + "</p>");
+      });
+    })
+  </script>
+</head>
+
+<body>
+  <h1>The Best Chatroom Ever</h1>
+  <div class="chat">Chatroom Established</div>
+  <input type="text" id="chattext">
+  <button id="sendChat">Send</button>
+</body>
+
+</html>

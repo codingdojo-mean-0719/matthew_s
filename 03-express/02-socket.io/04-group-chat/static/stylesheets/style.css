@@ -1,0 +1,21 @@
+* {
+  margin: auto;
+}
+
+body {
+  background-color: pink;
+}
+h1 {
+  text-align: center;
+}
+.chat {
+  height: 400px;
+  width: 700px;
+  border: 1px solid black;
+}
+
+#chattext{
+  margin-left: 289px;
+  margin-top: 10px;
+  width: 645px;
+}
