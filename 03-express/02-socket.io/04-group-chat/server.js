@@ -59,7 +59,15 @@ io.on('connection', function (socket) {
     //Emit new chat to front end
     io.sockets.emit('updatedChat', chat);
   })
+  socket.on('disconnect', function () {
+    const user = users[socket.id]
+    chat.push(user.name + " has left the building");
+    io.sockets.emit('userLeft', chat);
+    console.log("disconnected");
+  })
 });
+
+
 
 app.get('/', function (request, response) {
   response.render('index');
