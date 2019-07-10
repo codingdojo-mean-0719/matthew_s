@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Survey Form</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      var socket = io.connect();
+      socket.on('greeting', function (data) {
+        console.log(data.msg);
+      });
+
+      $('.form').submit(function (e) {
+        socket.emit('posting_form', {
+          name: $('#name').val(), location: $('#location').val(), langauge: $('#language').val(), comments: $('#comments').val()
+        });
+        alert("submitted");
+      });
+
+      socket.on('updated_message', function (data) {
+        console.log(data);
+        $("#message").html("You emitted the following information to the server: " + data.name);
+      });
+
+      socket.on('random_number', function (data) {
+        console.log(data.num)
+        $("#message").html("<p>" + data.num + "</p>");
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <div id="message"></div>
+  <form method="get" action="" class="form">
+    <p>Name: <input type="text" name="name" id="name"></p>
+    <p>Location: <select name="location" id="location"></p>
+    <option value="Mountain View">Mountain View</option>
+    <option value="Idaho">Idaho</option>
+    <option value="Seattle">Seattle</option>
+    </select>
+    <p>Favorite Language:
+      <select name="language" id="language">
+        <option value="Javascript">Javascript</option>
+        <option value="Java">Java</option>
+        <option value="Python">Python</option>
+      </select></p>
+    <p>Comments:
+      <textarea name="comments" id="comments"></textarea></p>
+    <input type="submit" value="Submit">
+  </form>
+
+</body>
+
+</html>
