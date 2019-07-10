@@ -7,7 +7,7 @@ app.set('view engine', 'ejs');
 
 var counter = 0
 io.on('connection', function (socket) {
-  socket.emit('greeting', { msg: 'Sup wit it, vanilla face?' });
+  socket.emit('greeting', { msg: 'Sup with it, vanilla face?' });
   socket.on('button_click', function (data) {
     counter += data.counter;
     console.log(counter);
@@ -21,7 +21,7 @@ io.on('connection', function (socket) {
 });
 
 app.get('/', function (request, response) {
-  response.render('index');
+  response.render('index', { counter: counter });
 })
 
 app.listen(8000, function () {
