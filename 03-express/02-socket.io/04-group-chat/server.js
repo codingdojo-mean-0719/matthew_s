@@ -11,9 +11,9 @@ app.use(session({
   saveUnitialized: true,
   cookie: { maxAge: 60000 }
 }))
-
 app.set('views', __dirname + '/public');
 app.set('view engine', 'ejs');
+
 
 class User {
   constructor(name, id) {
