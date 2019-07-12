@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Update Your Animal</title>
+</head>
+
+<body>
+  <h1>Edit Your Animal</h1>
+  <form method="POST" action="/mongooses/<%= details[0].id %>">
+    <p>Type: <input type="text" name="type" value="<%= details[0].type %>"></p>
+    <p>Name: <input type="text" name="name" value="<%= details[0].name %>"></p>
+    <input type="submit" value="Update!">
+  </form>
+</body>
+
+</html>

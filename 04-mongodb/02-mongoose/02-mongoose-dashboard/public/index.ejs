@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mongoose Dashboard</title>
+</head>
+
+<body>
+  <h1>All the Animals!</h1>
+  <table border=1>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Created</th>
+    </tr>
+    <% for (var x of animals) { %>
+    <tr>
+      <td><a href="/mongooses/<%= x._id %>"><%= x.name %></a></td>
+      <td><%= x.type %></td>
+      <td><%= x.createdAt %></td>
+    </tr>
+    <% } %>
+  </table>
+
+  <p><a href="/mongooses/new">Create a New Animal</a></p>
+</body>
+
+</html>

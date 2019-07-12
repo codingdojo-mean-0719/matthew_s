@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Make a New Buddy</h1>
+  <% if(messages.registration) { %>
+  <% for (var x of messages.registration) { %>
+  <h3><%= x %></h3>
+  <% } %>
+  <% } %>
+  <form method="post" action="/mongooses">
+    <p>Type of Animal: <input type="text" name="type"></p>
+    <p>Name of Animal: <input type="text" name="name"></p>
+    <input type="submit" value="Create!">
+  </form>
+</body>
+
+</html>
