@@ -51,7 +51,7 @@ app.post('/quotes', function (req, res) {
 });
 
 app.get('/quotes', function (req, res) {
-  Quote.find({})
+  Quote.find({}).sort('-createdAt')
     .then(results => {
       res.render('quotes', { quotes: results });
     })
