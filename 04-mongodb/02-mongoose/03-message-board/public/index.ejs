@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>The Dojo Message Board</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="container">
+    <h1>The Dojo Message Board</h1>
+    <hr>
+    <div class="form-group">
+      <form method="POST" action="/post">
+        <p>Name:</p>
+        <input type="text" name="user" class="form-control">
+        <p>Message:</p>
+        <p><textarea name="message" class="form-control"></textarea></p>
+        <input type="submit" class="btn btn-primary" value="Post Message">
+      </form>
+    </div>
+    <% for (var x of posts) {%>
+    <p>User: <%= x.user %></p>
+    <p>Comment: <%= x.message %></p>
+    <hr>
+    <% for (var i = 0; i < x.comments.length; i++) { %>
+    <p>Name: <%= x.comments[i].user %></p>
+    <p>Comment: <%= x.comments[i].comment %></p>
+    <% } %>
+    <form method="post" action="/comment/<%= x.id %>">
+      <p>Name: <input type="text" name="user"></p>
+      <p>Comment: <textarea name="comment"></textarea></p>
+      <input type="submit" value="Post Comment">
+    </form>
+    <% } %>
+  </div>
+</body>
+
+</html>
