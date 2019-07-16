@@ -119,13 +119,13 @@ setTimeout(function () {
 
 // Arrow function disconnected from the class. using bind... or arrow function will cause babar's age to increase
 
-class Elephant {
+class Elephant2 {
   constructor(public age: number) { }
   birthday = () => {
     this.age++;
   }
 }
-const babar = new Elephant(8);
+const babar2 = new Elephant(8);
 setTimeout(babar.birthday, 1000)
 setTimeout(function () {
   console.log(`Babar's age is ${babar.age}.`)
