@@ -1,3 +1,5 @@
+// import { dirname } from "path";
+
 var myString: string;
 // I can assign myString like this:
 myString = "Bee stinger";
@@ -83,32 +85,48 @@ console.log(study(shane));
 // 2 strings would make the instance work. The study didn't function because the parameter was an instance of the Ninja class.
 // since we fixed the ninja class constructor, we could pass in shane with no errors
 
-// var increment = x => {x + 1};
-// // This works great:
-// console.log(increment(3));
-// const square = x => {x * x};
-// // This is not showing me what I want:
-// console.log(square(4));
-// // This is not working:
-// var multiply = (x,y) => {x * y};
-// // Nor is this working:
-// var math = (x, y) => let sum = {x + y};
-//    let product = x * y;
-//    let difference = Math.abs(x-y);
-//    return [sum, product, difference];
-
-// I have no idea
-
-// class Elephant {
-//   constructor(public age: number) { }
-//   birthday = this.age++; 
-// }
-
-// const babar = new Elephant(8);
-// setTimeout(babar.birthday, 1000)
-// setTimeout(function () {
-//   console.log(`Babar's age is ${babar.age}.`)
-// }, 2000)
-// Why didn't babar's age change? Fix this by using an arrow function in the Elephant class.
+var increment = x => { x + 1 };
+// This works great:
+console.log(increment(3));
+const square = x => { x * x };
+// This is not showing me what I want:
+console.log(square(4));
+// This is not working:
+var multiply = (x, y) => { x * y };
+// Nor is this working:
+var math = (x, y) => {
+  let sum = x + y;
+  let product = x * y;
+  let difference = Math.abs(x - y)
+  return [sum, product, difference];
+};
 
 
+// with arrow functions, you still need to have the curly braces to indicate the start and end of the function, so wrapping the actual function
+// in the curly braces gets rid of the errors
+
+class Elephant {
+  constructor(public age: number) { }
+  birthday() {
+    this.age++;
+  }
+}
+const babar = new Elephant(8);
+setTimeout(babar.birthday.bind(babar), 1000)
+setTimeout(function () {
+  console.log(`Babar's age is ${babar.age}.`)
+}, 2000)
+
+// Arrow function disconnected from the class. using bind... or arrow function will cause babar's age to increase
+
+class Elephant {
+  constructor(public age: number) { }
+  birthday = () => {
+    this.age++;
+  }
+}
+const babar = new Elephant(8);
+setTimeout(babar.birthday, 1000)
+setTimeout(function () {
+  console.log(`Babar's age is ${babar.age}.`)
+}, 2000)
