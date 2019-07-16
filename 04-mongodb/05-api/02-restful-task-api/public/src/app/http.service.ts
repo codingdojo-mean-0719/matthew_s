@@ -7,18 +7,13 @@ import { HttpClient } from '@angular/common/http';
 export class HttpService {
 
   constructor(private http: HttpClient) {
-    this.displayTask();
+    this.getPokemon();
   }
 
-  getTasks() {
-    let tempObservable = this.http.get('/tasks');
-    tempObservable.subscribe(data => console.log("Got the tasks!", data));
+  getPokemon() {
+    let bulbasaur = this.http.get('https://pokeapi.co/api/v2/pokemon/1/');
+    bulbasaur.subscribe(data => console.log("Got the PokeMon!!", data));
+
+
   }
-
-  displayTask() {
-    let displayTask = this.http.get('/5d2e28540577b62eb0494630');
-    displayTask.subscribe(data => console.log("got the task!", data));
-  }
-
-
 }
