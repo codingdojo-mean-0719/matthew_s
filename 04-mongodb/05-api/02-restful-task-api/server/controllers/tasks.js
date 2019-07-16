@@ -21,6 +21,7 @@ module.exports = {
       })
   },
   add: (req, res) => {
+    console.log(req.body);
     let newTask = new Task(req.body);
     console.log(newTask);
     newTask.save(err => {

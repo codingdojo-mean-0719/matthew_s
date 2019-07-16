@@ -97,19 +97,18 @@ app.post("/login", function (req, res) {
   User.findOne({ email: req.body.logemail })
     .then(user => {
       console.log(req.body.pw, user.password);
-      bcrypt.compare(req.body.pw, user.password, function (err, result) {
-        if (result === true) {
-          console.log("success!!!!!");
-          res.redirect('/dashboard');
-        } else {
-          console.log("f***!!!" + err);
+      return bcrypt.compare(req.body.pw, user.password)
+        .then(result => {
+          if (!result) {
+            throw new Error();
+          }
           res.redirect('/');
-        }
-      })
+        })
+
     })
     .catch(error => {
       console.log('username/password doesnt exist');
       req.flash('invalid', 'Username/Password is incorrect');
-      res.locals.message = req.flash();
+      res.render('index');
     })
 });
