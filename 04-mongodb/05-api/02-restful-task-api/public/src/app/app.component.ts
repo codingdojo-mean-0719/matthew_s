@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from './http.service';
+import { Task } from './task.interface';
 
 @Component({
   selector: 'app-root',
@@ -8,13 +9,14 @@ import { HttpService } from './http.service';
 })
 export class AppComponent implements OnInit {
   title = 'Restful Tasks Continued';
-  tasks: any;
+  tasks: Task[] = [];
 
   constructor(private httpService: HttpService) {
   }
   ngOnInit() {
     this.getTasksFromService();
   }
+
 
   getTasksFromService(): void {
     let observable = this.httpService.getTasks();

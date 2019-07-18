@@ -1,0 +1,19 @@
+<div class="root">
+  <div style="text-align:center">
+    <h1>
+      {{title}}
+    </h1>
+  </div>
+  <h2>All of the Tasks</h2>
+
+  <button (click)="onButtonClick()">Get All Tasks</button>
+  <div *ngFor="let t of tasks">
+    {{t.title}} <button (click)="showTaskDetails(t._id)">Show</button>
+    <div *ngIf="task._id === t._id" style="border:1px solid; text-align:center">
+      <h3>{{task.title}}</h3>{{task.description}}
+    </div>
+  </div>
+</div>
+
+
+<router-outlet></router-outlet>
