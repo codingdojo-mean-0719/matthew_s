@@ -1,0 +1,29 @@
+.placeholder {
+  width: 24%;
+  display: inline-block;
+  border: 1px solid black;
+  text-align: center;
+  padding-top: 0px;
+  margin: 0px;
+}
+
+.activity {
+  width: 97%;
+  border: 1px solid black;
+  overflow-y: scroll;
+  min-height: 250px;
+  max-height: 250px;
+  min-width: 80%;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+}
+
+.red {
+  color: red;
+}
+.green {
+  color: green;
+}
