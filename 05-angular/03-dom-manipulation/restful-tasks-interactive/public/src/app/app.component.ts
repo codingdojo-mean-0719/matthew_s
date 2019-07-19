@@ -11,7 +11,7 @@ import { Task } from './task.interface';
 export class AppComponent implements OnInit {
   title = 'Restful Tasks Interactive';
   tasks: Task[] = [];
-  task = [];
+  task;
 
 
   constructor(private httpService: HttpService) { }
@@ -32,7 +32,6 @@ export class AppComponent implements OnInit {
     observable.subscribe(data => {
       console.log("got the one task", data)
       this.task = data;
-    })
-
+    });
   }
 }
