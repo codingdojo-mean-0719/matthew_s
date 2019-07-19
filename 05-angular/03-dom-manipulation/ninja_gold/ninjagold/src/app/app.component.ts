@@ -21,7 +21,6 @@ export class AppComponent implements OnInit {
   }
 
   onFarm(event: Event) {
-    console.log('yeehaw bitch!');
     const randomNum: number = Math.floor(Math.random() * (20 - 10) + 10);
     this.count += randomNum;
     this.activity.push(
@@ -31,7 +30,6 @@ export class AppComponent implements OnInit {
   }
 
   onCave() {
-    console.log('splunk bitch!');
     const randomNum: number = Math.floor(Math.random() * (10 - 5 + 1) + 5);
     this.count += randomNum;
     this.activity.push(
@@ -41,7 +39,6 @@ export class AppComponent implements OnInit {
   }
 
   onHouse() {
-    console.log('lazy bitch!');
     const randomNum: number = Math.floor(Math.random() * (5 - 2 + 1) + 2);
     this.count += randomNum;
     this.activity.push(
@@ -51,7 +48,6 @@ export class AppComponent implements OnInit {
   }
 
   onCasino() {
-    console.log('Gambling Time!');
     const randomNum: number = Math.floor(Math.random() * (50 - -50 + 1) + -50);
     this.count += randomNum;
     if (randomNum > 0) {
