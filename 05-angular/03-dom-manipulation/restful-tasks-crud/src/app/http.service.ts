@@ -20,12 +20,12 @@ export class HttpService {
   addTask(newtask) {
     return this.http.post('/create', newtask);
   }
-  updateTask(editTask) {
-    return this.http.put(`/update/${editTask._id}`, editTask);
+  updateTask(editTask: Task): Observable<Task> {
+    return this.http.put<Task>(`/update/${editTask._id}`, editTask);
   }
-  deleteTask(task_id) {
+  deleteTask(task_id: string): Observable<Task> {
     console.log("deleting" + task_id);
-    return this.http.delete(`/remove/${task_id}`);
+    return this.http.delete<Task>(`/remove/${task_id}`);
 
   }
 }

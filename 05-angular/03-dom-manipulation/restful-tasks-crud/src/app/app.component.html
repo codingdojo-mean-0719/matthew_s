@@ -37,10 +37,11 @@
         </p>
         <button (click)="onEditTask(t)">Edit</button>
         <div *ngIf="editTask._id === t._id" style="border:1px solid; text-align:center">
-          <form (submit)="onEditTaskSubmit(editTask)">
-            <p>Title: <input type="text" name="title" [(ngModel)]="editTask.title"></p>
-            <p>Description: <input type="text" name="description" [(ngModel)]="editTask.description"></p>
-            <p>Completed: <input type="text" name="completed" [(ngModel)]="editTask.completed"></p>
+          <form #editForm='ngForm' (submit)="onEditTaskSubmit(editForm.value)">
+            <input type="hidden" name="_id" [ngModel]="editTask._id">
+            <p>Title: <input type="text" name="title" [ngModel]="editTask.title"></p>
+            <p>Description: <input type="text" name="description" [ngModel]="editTask.description"></p>
+            <p>Completed: <input type="text" name="completed" [ngModel]="editTask.completed"></p>
             <button>Update Task</button>
           </form>
         </div>

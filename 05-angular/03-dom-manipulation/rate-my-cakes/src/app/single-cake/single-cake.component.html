@@ -1,0 +1,10 @@
+<p>single-cake works!</p>
+
+<h3> Baked By {{selectedCake[0].baker}}</h3>
+<p> <img src="{{selectedCake[0].image}}" width="200" height="200"></p>
+
+<div class="rating" *ngFor="let rating of selectedCake[0].rating">
+  <p>Rating: {{rating.rating}}</p>
+  <p>Comment: {{rating.comment}}</p>
+  <p>---------------------------</p>
+</div>

@@ -34,24 +34,30 @@ module.exports = {
     });
   },
   update: (req, res) => {
-    Task.update({ _id: req.params.id }, req.body, err => {
+    Task.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedTask) => {
       if (err) {
         res.json({ Error: err });
       } else {
-        res.json({ Success: req.body });
+        res.json(updatedTask);
         console.log('Successfully Edited');
       }
     });
   },
   destroy: (req, res) => {
-    Task.remove({ _id: req.params.id }, err => {
-      if (err) {
-        res.json({ error: err });
-        console.log(err);
-      } else {
-        res.json('Deleted');
-        console.log("deleted");
-      }
-    });
+    Task.findByIdAndDelete(req.params.id)
+      .then(deletedTask => {
+        res.json(deletedTask);
+      })
+      .catch(err => {
+        res.status(500).json(err);
+      })
+    //   if (err) {
+    //     res.json({ error: err });
+    //     console.log(err);
+    //   } else {
+    //     res.json('Deleted');
+    //     console.log("deleted");
+    //   }
+    // });
   },
 };

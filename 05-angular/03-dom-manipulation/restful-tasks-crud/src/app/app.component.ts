@@ -48,27 +48,38 @@ export class AppComponent implements OnInit {
     this.newTask = { title: '', description: '' };
   }
 
-  onEditTaskSubmit(editTask) {
-    let observable = this.httpService.updateTask(editTask);
-    console.log(this.editTask);
-    observable.subscribe(data => {
+  onEditTaskSubmit(editTask: Task) {
+    this.httpService.updateTask(editTask).subscribe(data => {
+      this.tasks = this.tasks.map(currentTask => currentTask._id === data._id ? data : currentTask)
       console.log('task has been updated', data);
     });
-  }
 
+  }
+  
   onEditTask(task: Task) {
-    this.editTask = {
-      _id: task._id,
-      title: task.title,
-      description: task.description,
-      completed: task.completed
-    };
+    this.editTask = task;
+    // this.editTask = {
+    //   _id: task._id,
+    //   title: task.title,
+    //   description: task.description,
+    //   completed: task.completed
+    // };
     console.log('selecting', this.editTask);
   }
 
   onDelete(task: Task) {
     console.log(task._id);
-    let observable = this.httpService.deleteTask(task._id);
-    console.log("deleted");
+    this.httpService.deleteTask(task._id).subscribe(data => {
+      this.tasks = this.tasks.filter(currentTask => currentTask._id !== data._id)
+      // for (let i = 0; i < this.tasks.length; i++) {
+      //   const currentTask = this.tasks[i];
+      //   if (currentTask._id === data._id) {
+      //     this.tasks.splice(i, 1);
+      //     console.log("spliced!");
+      //   }
+      //   console.log(this.tasks);
+      // }
+    })
+
   }
 }
