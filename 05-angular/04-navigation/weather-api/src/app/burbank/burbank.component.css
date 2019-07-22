@@ -1,0 +1,15 @@
+.container {
+  width: 90%;
+  margin: auto;
+  text-align: center;
+}
+.weather {
+  vertical-align: top;
+  display: inline-block;
+}
+
+.picture {
+  display: inline-block;
+  margin-left: 200px;
+  margin-top: 15px;
+}

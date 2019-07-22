@@ -5,6 +5,6 @@ module.exports = function (app) {
     tasks.index(req, res);
   })
   app.all("*", (req, res, next) => {
-    res.sendFile(path.resolve("./app/app.component.html"))
+    res.sendFile(path.resolve('./server/app.component.html'));
   });
 };
