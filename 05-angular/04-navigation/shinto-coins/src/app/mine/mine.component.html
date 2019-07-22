@@ -1,0 +1,10 @@
+<h1>Mine ShintoCoins</h1>
+
+<p>Here you can mind ShintoCoins by being the first to solve the algorithm:</p>
+<p>What is the 7th Fibonacci sequence number?</p>
+{{ answerQuestion | json }}
+${{ balance?.value }}.00 value | {{ balance?.balance }} in your purse
+<form (submit)="mineCoins()">
+  <input type="text" name="answerQuestion.number" [(ngModel)]="answerQuestion.number"> <button>Mine</button>
+</form>
+{{ message }}
