@@ -5,6 +5,7 @@ import { ProductComponent } from './product/product.component';
 import { CreateComponent } from './create/create.component';
 import { EditComponent } from './product/edit/edit.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component'
+import { Z_FULL_FLUSH } from 'zlib';
 
 
 const routes: Routes = [
@@ -14,18 +15,25 @@ const routes: Routes = [
   },
   {
     path: 'products',
-    component: ProductComponent,
     children: [
       {
+        path: '',
+        component: ProductComponent,
+        pathMatch: 'full',
+      },
+      {
         path: 'edit/:id',
-        component: EditComponent
+        component: EditComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: 'new',
+        component: CreateComponent,
+        pathMatch: 'full',
       },
     ]
   },
-  {
-    path: 'products/new',
-    component: CreateComponent,
-  },
+
   { path: '**', component: PagenotfoundComponent }
 ];
 

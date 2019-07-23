@@ -10,7 +10,9 @@ import { Router } from '@angular/router';
 })
 export class ProductComponent implements OnInit {
   products: Product[] = [];
-  constructor(private httpService: HttpService, private router: Router) { }
+  constructor(private httpService: HttpService, private router: Router) {
+
+  }
 
   ngOnInit() {
     this.getProductsFromService();
@@ -31,5 +33,10 @@ export class ProductComponent implements OnInit {
     this.httpService.deleteProduct(product._id).subscribe(data => {
       this.products = this.products.filter(currentProduct => currentProduct._id !== data._id);
     });
+  }
+
+  invoked(event) {
+    console.log('invoked', event);
+    this.products = this.products.map(currentProduct => currentProduct._id === event._id ? event : currentProduct);
   }
 }
