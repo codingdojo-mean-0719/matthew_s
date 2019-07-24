@@ -1,0 +1,14 @@
+<div class="container">
+  <h1>Anonymous Notes</h1>
+  <div class="post">
+
+    <form (submit)="addNote()">
+      <p>Note: <input type="text" name="note" [(ngModel)]="newNote.note"><input type="submit" value="Add Note">
+
+    </form>
+  </div>
+
+
+  <app-posts [notes]="notes"></app-posts>
+
+</div>

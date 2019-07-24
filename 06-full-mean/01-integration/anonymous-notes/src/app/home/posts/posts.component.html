@@ -1,0 +1,3 @@
+<div *ngFor="let n of notes" class="note">
+  <strong>{{ n.note }}</strong> - Noted on {{ stringAsDate(n.createdAt) | date:'MMM dd yyy h:mm:ss a' }}
+</div>

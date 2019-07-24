@@ -5,7 +5,7 @@ import { ProductComponent } from './product/product.component';
 import { CreateComponent } from './create/create.component';
 import { EditComponent } from './product/edit/edit.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component'
-import { Z_FULL_FLUSH } from 'zlib';
+
 
 
 const routes: Routes = [
